@@ -1,0 +1,36 @@
+{
+    "id": "php-mariadb",
+    "version": "3.2.0",
+    "name": "PHP & MariaDB",
+    "dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
+	"forwardPorts": [8080, 3306],
+    "description": "Develop PHP applications with MariaDB (MySQL Compatible).",
+    "documentationURL": "https://github.com/devcontainers/templates/tree/main/src/php-mariadb",
+    "publisher": "Dev Container Spec Maintainers",
+    "licenseURL": "https://github.com/devcontainers/templates/blob/main/LICENSE",
+    "options": {
+        "imageVariant": {
+            "type": "string",
+            "description": "PHP version (use -bookworm, -bullseye variants on local arm64/Apple Silicon):",
+            "proposals": [
+                "8-bookworm",
+                "8.2-bookworm",
+                "8.1-bookworm",
+                "8-bullseye",
+                "8.2-bullseye",
+                "8.1-bullseye",
+                "8-buster",
+                "8.2-buster",
+                "8.1-buster"
+            ],
+            "default": "8.2-bookworm"
+        }
+    },
+    "platforms": [
+        "PHP",
+        "MariaDB (MySQL Compatible)"
+    ]
+}

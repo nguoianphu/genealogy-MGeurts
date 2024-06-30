@@ -242,13 +242,29 @@ make the needed changes regarding name, url, database connection & mail server
 
 ## Docker Installation
 
-`cp env.docker .env`
+### Note for Docker
+If you're using VirtualBox or WSL2, you should not clone this git into a mounted Windows folder in C: or D: drive.
+
+**You should clone/copy this repo into the $HOME directory.**
+
+For docker and it proxies, you can make alias like this:
+
+```bash
+alias docker_proxy='sudo sed 's/^#Env/Env/g' -i /etc/systemd/system/docker.service.d/http-proxy.conf; sudo systemctl daemon-reload; sudo systemctl restart docker '
+alias docker_noproxy='sudo sed 's/^Env/#Env/g' -i /etc/systemd/system/docker.service.d/http-proxy.conf; sudo systemctl daemon-reload; sudo systemctl restart docker '
+```
+
+### Docker commands
+
+```bash
+cp env.docker .env
+```
 
 run following command to initialize project
 
 ```bash
 docker run --rm \
-    -u "$(id -u):$(id -g)" \
+    --network host \
     -v "$(pwd):/var/www/html" \
     -w /var/www/html \
     laravelsail/php83-composer:latest \

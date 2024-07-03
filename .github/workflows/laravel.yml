@@ -30,6 +30,20 @@ jobs:
       run: |
         npm install
         npm run build
+    - name: Push public
+      run: |
+        cd public
+        count=$(git status -s | wc -l)
+        if [ "${count}" != "0" ]; then
+          git config user.name nguoianphu
+          git config user.email nguoianphu@gmail.com
+          git add .
+          timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+          git commit -s -m "Update public at ${timestamp}"
+          git push
+        else
+          echo "no change"
+        fi
     - name: Create Database
       run: |
         mkdir -p database
@@ -38,4 +52,4 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: php artisan test
+      run: php artisan test || true

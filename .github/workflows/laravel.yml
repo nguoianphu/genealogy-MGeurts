@@ -35,6 +35,7 @@ jobs:
         cd public
         count=$(git status -s | wc -l)
         if [ "${count}" != "0" ]; then
+          echo "Get new changes"
           git config user.name nguoianphu
           git config user.email nguoianphu@gmail.com
           git add .

@@ -1,0 +1,48 @@
+{
+  "name": "korridor/laravel-has-many-merged",
+  "description": "Custom relationship for Eloquent that merges/combines multiple one-to-may (hasMany) relationships",
+  "keywords": ["laravel", "eloquent", "relations", "has-many"],
+  "homepage": "https://github.com/korridor/laravel-has-many-merged",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "korridor",
+      "email": "26689068+korridor@users.noreply.github.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "illuminate/database": "^10|^11"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3",
+    "nunomaduro/larastan": "^2.0",
+    "orchestra/testbench": "^8|^9",
+    "phpunit/phpunit": "^10",
+    "squizlabs/php_codesniffer": "^3.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Korridor\\LaravelHasManyMerged\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Korridor\\LaravelHasManyMerged\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "@php vendor/bin/phpunit",
+    "test-coverage": "@php vendor/bin/phpunit --coverage-html coverage",
+    "fix": "@php ./vendor/bin/php-cs-fixer fix",
+    "lint": "@php ./vendor/bin/phpcs --error-severity=1 --warning-severity=8 --extensions=php",
+    "analyse": [
+      "@php ./vendor/bin/phpstan analyse --memory-limit=2G"
+    ]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

@@ -33,18 +33,13 @@ jobs:
     - name: Push public
       run: |
         cd public
-        count=$(git status -s | wc -l)
-        if [ "${count}" != "0" ]; then
-          echo "Get new changes"
-          git config user.name nguoianphu
-          git config user.email nguoianphu@gmail.com
-          git add .
-          timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-          git commit -s -m "Update public at ${timestamp}"
-          git push
-        else
-          echo "no change"
-        fi
+        echo "Get new changes"
+        git config user.name nguoianphu
+        git config user.email nguoianphu@gmail.com
+        git add .
+        timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+        git commit -s -m "Update public at ${timestamp}"
+        git push
     - name: Create Database
       run: |
         mkdir -p database

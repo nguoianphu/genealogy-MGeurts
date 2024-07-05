@@ -17,12 +17,17 @@ image: sail-8.2/app
 
 docker run --rm \
     --network host \
+    -e http_proxy=http://localhost:3128 \
+    -e https_proxy=http://localhost:3128 \
     -v "$(pwd):/var/www/html" \
     -w /var/www/html \
     laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs
 
 run docker containers
+
+chmod +x ./vendor/laravel/sail/bin/sail
+chmod +x ./vendor/bin/sail
 
 ./vendor/bin/sail up -d
 ./vendor/bin/sail artisan key:generate

@@ -56,3 +56,36 @@ editor@genealogy.test	password	to access team KENNEDY as editor
 member_1@genealogy.test	password	to access team BRITISH ROYALS as normal member
 member_4@genealogy.test	password	to access team KENNEDY as normal member
 developer@genealogy.test	password	to access options reserved for the developer, like the user management and access to all persons in all teams
+
+
+
+
+
+#############
+
+
+
+docker compose --verbose up
+
+user@apertispro:~/github/genealogy-MGeurts[dev]$ docker run -it     --network host     -e http_proxy=http://localhost:3128     -e https_proxy=http://localhost:3128     -v "$(pwd):/var/www/html"     -w /var/www/html     laravelsail/php82-composer:latest /bin/bash
+
+
+composer install --ignore-platform-reqs
+
+
+docker exec -it genealogy-mgeurts-laravel.test-1 /bin/bash
+php artisan key:generate
+php artisan storage:link
+php artisan migrate:fresh --seed
+npm install
+npm run build
+
+php artisan serve
+# or npm run dev
+
+
+
+docker exec -it genealogy-mgeurts-mysql-1 /bin/bash
+
+
+

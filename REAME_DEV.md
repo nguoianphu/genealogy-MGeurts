@@ -76,6 +76,7 @@ composer install --ignore-platform-reqs
 docker exec -it genealogy-mgeurts-laravel.test-1 /bin/bash
 php artisan key:generate
 php artisan storage:link
+# ln -s /var/www/html/storage/app/public /var/www/html/public/storage
 php artisan migrate:fresh --seed
 npm install
 npm run build
@@ -96,3 +97,31 @@ docker exec -it genealogy-mgeurts-mysql-1 /bin/bash
 
 
 
+###########
+
+
+# Deploy to shared host
+
+Example shared host giapha.nguoianphu.com
+Make a folder name laravel on the shared host
+mkdir -p giapha.nguoianphu.com/laravel
+Copy all source to the laravel
+cp -r github_source giapha.nguoianphu.com/laravel
+
+On the shared host:
+Copy all files in laravel/public/* to the same lavel with laravel folder
+cd giapha.nguoianphu.com/laravel
+cp -r public/* ../
+
+Edit index.php and .env
+
+Create DB and import SQL
+
+Remove symlink in public
+cd giapha.nguoianphu.com
+unlink storage
+unlink laravel/public/storage
+
+chmod -R 777 laravel/storage
+ln -s $PWD/laravel/storage/app/public $PWD/storage
+ln -s $PWD/laravel/storage/app/public $PWD/laravel/public/storage

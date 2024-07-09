@@ -73,14 +73,19 @@ services:
             - '${FORWARD_MAILPIT_PORT:-1025}:1025'
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         network_mode: host
-            # - host
+            # - 
+    adminer:
+        image: adminer
+        ports:
+            - 8080:8080
+        network_mode: host
     # phpmyadmin:
     #     image: phpmyadmin
     #     ports:
-    #     - 8080:8080
+    #     - 8080:80
     #     environment:
     #     - PMA_ARBITRARY=1
-    #     network_mode: host
+        # network_mode: host
             # - host
 # networks:
 #     host:

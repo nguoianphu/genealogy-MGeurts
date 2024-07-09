@@ -83,7 +83,14 @@ npm run build
 php artisan serve
 # or npm run dev
 
+http://localhost/
 
+# adminer
+http://localhost:8080/
+server: 127.0.0.1
+database: genealogy
+user: sail
+password: password
 
 docker exec -it genealogy-mgeurts-mysql-1 /bin/bash
 
